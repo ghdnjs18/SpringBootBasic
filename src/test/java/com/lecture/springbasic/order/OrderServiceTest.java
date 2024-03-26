@@ -1,18 +1,13 @@
 package com.lecture.springbasic.order;
 
 import com.lecture.springbasic.AppConfig;
-import com.lecture.springbasic.discount.DiscountPolicy;
-import com.lecture.springbasic.discount.FixDiscountPolicy;
 import com.lecture.springbasic.member.Grade;
 import com.lecture.springbasic.member.Member;
 import com.lecture.springbasic.member.MemberService;
-import com.lecture.springbasic.member.memberServiceImpl;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class OrderServiceTest {
 

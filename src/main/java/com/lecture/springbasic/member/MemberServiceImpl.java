@@ -1,10 +1,10 @@
 package com.lecture.springbasic.member;
 
-public class memberServiceImpl implements MemberService {
+public class MemberServiceImpl implements MemberService {
 
     private final MemberRepository memberRepository;
 
-    public memberServiceImpl(MemberRepository memberRepository) {
+    public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
 

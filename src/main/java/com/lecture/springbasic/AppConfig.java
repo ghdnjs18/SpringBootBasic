@@ -1,12 +1,11 @@
 package com.lecture.springbasic;
 
 import com.lecture.springbasic.discount.DiscountPolicy;
-import com.lecture.springbasic.discount.FixDiscountPolicy;
 import com.lecture.springbasic.discount.RateDiscountPolicy;
 import com.lecture.springbasic.member.MemberRepository;
 import com.lecture.springbasic.member.MemberService;
 import com.lecture.springbasic.member.MemoryMemberRepository;
-import com.lecture.springbasic.member.memberServiceImpl;
+import com.lecture.springbasic.member.MemberServiceImpl;
 import com.lecture.springbasic.order.OrderService;
 import com.lecture.springbasic.order.OrderServiceImpl;
 import org.springframework.context.annotation.Bean;
@@ -19,7 +18,7 @@ public class AppConfig {
 
     @Bean
     public MemberService memberService() {
-        return new memberServiceImpl(memberRepository());
+        return new MemberServiceImpl(memberRepository());
     }
 
     @Bean
