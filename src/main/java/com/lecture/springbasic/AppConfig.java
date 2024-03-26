@@ -1,6 +1,9 @@
 package com.lecture.springbasic;
 
+import com.lecture.springbasic.discount.DiscountPolicy;
 import com.lecture.springbasic.discount.FixDiscountPolicy;
+import com.lecture.springbasic.discount.RateDiscountPolicy;
+import com.lecture.springbasic.member.MemberRepository;
 import com.lecture.springbasic.member.MemberService;
 import com.lecture.springbasic.member.MemoryMemberRepository;
 import com.lecture.springbasic.member.memberServiceImpl;
@@ -12,10 +15,21 @@ import com.lecture.springbasic.order.OrderServiceImpl;
 public class AppConfig {
 
     public MemberService memberService() {
-        return new memberServiceImpl(new MemoryMemberRepository());
+        return new memberServiceImpl(memberRepository());
     }
 
     public OrderService orderService() {
-        return new OrderServiceImpl(new MemoryMemberRepository(), new FixDiscountPolicy());
+        return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
+
+    // 구성 정보에서 역할과 구현을 명확하게 분리해 역할이 잘 드러나고 중복을 제거함
+    private static MemberRepository memberRepository() {
+        return new MemoryMemberRepository();
+    }
+
+    private static DiscountPolicy discountPolicy() {
+//        return new FixDiscountPolicy();
+        return new RateDiscountPolicy();
+    }
+
 }
