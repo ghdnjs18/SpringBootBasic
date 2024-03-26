@@ -1,5 +1,6 @@
 package com.lecture.springbasic.order;
 
+import com.lecture.springbasic.AppConfig;
 import com.lecture.springbasic.discount.DiscountPolicy;
 import com.lecture.springbasic.discount.FixDiscountPolicy;
 import com.lecture.springbasic.member.Grade;
@@ -7,6 +8,7 @@ import com.lecture.springbasic.member.Member;
 import com.lecture.springbasic.member.MemberService;
 import com.lecture.springbasic.member.memberServiceImpl;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -14,8 +16,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class OrderServiceTest {
 
-    private MemberService memberService = new memberServiceImpl();
-    private OrderService orderService = new OrderServiceImpl();
+    private MemberService memberService;
+    private OrderService orderService;
+
+    @BeforeEach
+    public void beforeEach() {
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+        orderService = appConfig.orderService();
+    }
 
     @Test
     @DisplayName("주문과 할인 정책 테스트")
