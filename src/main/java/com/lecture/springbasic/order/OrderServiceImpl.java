@@ -6,10 +6,12 @@ import com.lecture.springbasic.discount.RateDiscountPolicy;
 import com.lecture.springbasic.member.Member;
 import com.lecture.springbasic.member.MemberRepository;
 import com.lecture.springbasic.member.MemoryMemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
     private final MemberRepository memberRepository;
@@ -21,12 +23,12 @@ public class OrderServiceImpl implements OrderService {
     // 초기화를 하지 않으면 구현 클래스에 의존하지 않고 인터페이스에만 의존한다. -> DIP 성립
     private final DiscountPolicy discountPolicy;
 
-    @Autowired
     // 생성자를 통해 구현 객체가 주입되어 클라이언트에서 수정할 필요가 없다. -> OCP 성립
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
+//    @Autowired
+//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = discountPolicy;
+//    }
 
     // 테스트용
     public MemberRepository getMemberRepository() {
