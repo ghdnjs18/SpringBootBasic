@@ -1,5 +1,6 @@
 package com.lecture.springbasic.order;
 
+import com.lecture.springbasic.annotation.MainDiscountPolicy;
 import com.lecture.springbasic.discount.DiscountPolicy;
 import com.lecture.springbasic.discount.FixDiscountPolicy;
 import com.lecture.springbasic.discount.RateDiscountPolicy;
@@ -27,7 +28,8 @@ public class OrderServiceImpl implements OrderService {
     // 생성자를 통해 구현 객체가 주입되어 클라이언트에서 수정할 필요가 없다. -> OCP 성립
     @Autowired
 //    public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
