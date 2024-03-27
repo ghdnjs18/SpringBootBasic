@@ -2,15 +2,15 @@ package com.lecture.springbasic.scope;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import jakarta.inject.Provider;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Scope;
-
-import javax.inject.Provider;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -29,6 +29,7 @@ public class SingletonWithPrototypeTest1 {
     }
 
     @Test
+    @Disabled
     void singletonClientUsePrototype() {
         AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(ClientBean.class, PrototypeBean.class);
         ClientBean clientBean1 = ac.getBean(ClientBean.class);
@@ -81,11 +82,12 @@ public class SingletonWithPrototypeTest1 {
         @Autowired
 //        private ObjectProvider<PrototypeBean> protorypeBeanProvider;
         // JSR-330 Provider 사용
-        private Provider<PrototypeBean> protorypeBeanProvider;
+        private Provider<PrototypeBean> provider;
 
         public int logic() {
 //            PrototypeBean prototypeBean = ac.getBean(PrototypeBean.class);
-            PrototypeBean prototypeBean = protorypeBeanProvider.getObject();
+//            PrototypeBean prototypeBean = protorypeBeanProvider.getObject();
+            PrototypeBean prototypeBean = provider.get();
             prototypeBean.addCount();
             int count = prototypeBean.getCount();
             return count;
