@@ -1,5 +1,8 @@
 package com.lecture.springbasic;
 
+import com.lecture.springbasic.member.MemberRepository;
+import com.lecture.springbasic.member.MemoryMemberRepository;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
@@ -11,4 +14,9 @@ import org.springframework.context.annotation.FilterType;
 )
 public class AutoAppConfig {
 
+    // 자동 빈 등록과 수동 빈 등록 출동 테스트
+//    @Bean(name = "memoryMemberRepository")
+//    public MemberRepository memberRepository() {
+//        return new MemoryMemberRepository();
+//    }
 }
